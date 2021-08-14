@@ -3,6 +3,7 @@ Project name - randomnumgenerator
 in build.gradle, version is 0.0.1
 dockerhub username: ganeshspark
 port specified in application.properties: 9091
+install java
 
 Steps:
 1. Clean with gradle
@@ -18,7 +19,7 @@ COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
 
 5. Build docker image passing the argument-jar file path, tag it with ur username/projectname
-docker build --build-arg JAR_FILE=build/libs/\\*.jar -t ganeshspark/randomnumgenerator .
+docker build --build-arg JAR_FILE=build/libs/randomnumgenerator-0.0.1.jar -t ganeshspark/randomnumgenerator .
 
 6. verify image with docker image ls
 
@@ -26,4 +27,4 @@ docker build --build-arg JAR_FILE=build/libs/\\*.jar -t ganeshspark/randomnumgen
 gradlew bootBuildImage --imageName=ganeshspark/randomnumgenerator
 
 8. run the image on port 9091
-docker run -p 9091:9091 -t ganeshspark/randomnumgenerator
+docker run -d -p 9091:9091 -t ganeshspark/randomnumgenerator
