@@ -18,7 +18,7 @@ public class MessageController {
   @Autowired
   RestTemplate restTemplate;
 
-  @Value("${randomNumGeneratorUrl}")
+  @Value("${randomNumGeneratorUrl:http://localhost:9091/}")
   String randomNumGeneratorUrl;
 
   @GetMapping("/demo")
