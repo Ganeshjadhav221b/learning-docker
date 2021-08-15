@@ -1,0 +1,23 @@
+version: '2'
+# Networks to be created to facilitate communication between containers
+networks:
+  messenger-network: 
+services:
+  messenger:
+    image: ganeshspark/messenger
+    ports: 
+      - "9090:9090"
+    environment: 
+      randomNumGeneratorUrl: http://randomnumgenerator:9091
+    depends_on: 
+      - randomnumgenerator
+    networks:
+      - messenger-network
+    restart: always
+  randomnumgenerator:
+    image: ganeshspark/randomnumgenerator
+    ports:
+      - "9091:9091"
+    networks:
+      - messenger-network
+    restart: always
